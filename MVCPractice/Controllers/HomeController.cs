@@ -7,6 +7,8 @@ using Microsoft.SqlServer.Server;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.ComponentModel.DataAnnotations;
+using MVCPractice.Classes;
+using MVCPractice.App_Start;
 
 namespace MVCPractice.Controllers
 {
@@ -15,7 +17,8 @@ namespace MVCPractice.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Your application home page.";
-
+            //InsertNinja();
+            //InsertMultipleNinjas();
             return View();
         }
 
@@ -64,6 +67,57 @@ namespace MVCPractice.Controllers
             public int Id { get; set; }
             public string Name { get; set; }
 
+        }
+        private static void InsertNinja()
+        {
+            var ninja = new Ninja
+            {
+                Name = "BrandonSan",
+                DateOfBirth = new DateTime(1990, 1, 15),
+                ClanId = 1
+            };
+
+            using (var context = new NinjaContext())
+            {
+                context.Ninjas.Add(ninja);
+                context.SaveChanges();
+            }
+        }
+
+        private static void InsertMultipleNinjas()
+        {
+            var ninja1 = new Ninja
+            {
+                Name = "Raphael",
+                DateOfBirth = new DateTime(1990, 2, 25),
+                ClanId = 1
+            };
+
+            var ninja2 = new Ninja
+            {
+                Name = "Donatello",
+                DateOfBirth = new DateTime(1990, 2, 25),
+                ClanId = 1
+            };
+
+            var ninja3 = new Ninja
+            {
+                Name = "Michelangelo",
+                DateOfBirth = new DateTime(1990, 2, 25),
+                ClanId = 1
+            };
+
+            var ninja4 = new Ninja
+            {
+                Name = "Leonardo",
+                DateOfBirth = new DateTime(1990, 2, 25),
+                ClanId = 1
+            };
+            using (var context = new NinjaContext())
+            {
+                context.Ninjas.AddRange(new List<Ninja> { ninja1, ninja2, ninja3, ninja4 });
+                context.SaveChanges();
+            }
         }
     }
 }
