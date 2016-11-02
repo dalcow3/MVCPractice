@@ -119,5 +119,24 @@ namespace MVCPractice.Controllers
                 context.SaveChanges();
             }
         }
+
+        private static void SimpleNinjaQueries()
+        {
+            using (var context = new NinjaContext())
+            {
+                var ninjas = context.Ninjas.ToList();
+                //var query = context.Ninjas;
+                //foreach (var ninja in context.Ninjas)
+                //{
+                  //  Console.WriteLine(ninja.Name);
+                //}
+
+            }
+        }
+
+        private static void QueryAndUpdateNinja()
+        {
+
+        }
     }
 }
