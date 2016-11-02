@@ -17,8 +17,8 @@ namespace MVCPractice.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Your application home page.";
-            InsertNinja();
-            InsertMultipleNinjas();
+            //InsertNinja();
+            //InsertMultipleNinjas();
             return View();
         }
 
